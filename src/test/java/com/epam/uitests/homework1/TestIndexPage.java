@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 import static org.openqa.selenium.By.id;
+import static org.testng.Assert.assertTrue;
 
 public class TestIndexPage {
     private WebDriver driver;
@@ -55,24 +56,17 @@ public class TestIndexPage {
         enterButton.click();
         WebElement userName = driver.findElement(By.xpath(".//span[contains(text(), 'Piter Chailovskii')]"));
 
-//        3. Assert User name in the left-top side of screen that user is loggined
+//        4. Assert User name in the left-top side of screen that user is loggined
         Assert.assertEquals(userName.getText(), "PITER CHAILOVSKII");
-        Assert.assertTrue(userName.isDisplayed());
 
-//        4. Assert Browser title
+//        5. Assert Browser title
         Assert.assertEquals(driver.getTitle(), "Home Page");
 
-//        5. Assert that there are 4 items on the header section are displayed and they have proper texts
+//        6. Assert that there are 4 items on the header section are displayed and they have proper texts
         WebElement homeItem = driver.findElement(By.xpath(".//a[@href = 'index.html']"));
         WebElement contactFormItem = driver.findElement(By.xpath(".//a[@href = 'contacts.html']"));
         WebElement serviceItem = driver.findElement(By.xpath(".//ul[contains(@class, 'uui-navigation')]//a[@class = 'dropdown-toggle']"));
         WebElement metalsAndColorsItem = driver.findElement(By.xpath(".//a[@href = 'metals-colors.html']"));
-
-        Assert.assertTrue(homeItem.isDisplayed());
-        Assert.assertTrue(contactFormItem.isDisplayed());
-        Assert.assertTrue(serviceItem.isDisplayed());
-        Assert.assertTrue(metalsAndColorsItem.isDisplayed());
-//        6. Assert that there are 4 items on the header section are displayed and they have proper texts
 
         Assert.assertEquals(homeItem.getText(), "HOME");
         Assert.assertEquals(contactFormItem.getText(), "CONTACT FORM");
@@ -89,16 +83,13 @@ public class TestIndexPage {
         customIcon.isDisplayed();
         multiIcon.isDisplayed();
         baseIcon.isDisplayed();
+
 //        8. Assert that there are 4 texts on the Index Page under icons and they have proper text
         WebElement textUderPractiseIcon = driver.findElement(By.xpath(".//div[@class = 'row clerafix benefits']/div[position()=1]//span[@class = 'benefit-txt']"));
         WebElement textUnderCustomItem = driver.findElement(By.xpath(".//div[@class = 'row clerafix benefits']/div[position()=2]//span[@class = 'benefit-txt']"));
         WebElement textUnderMultiIcon = driver.findElement(By.xpath(".//div[@class = 'row clerafix benefits']/div[position()=3]//span[@class = 'benefit-txt']"));
         WebElement textUnderBaseIcon = driver.findElement(By.xpath(".//div[@class = 'row clerafix benefits']/div[position()=4]//span[@class = 'benefit-txt']"));
 
-        textUderPractiseIcon.isDisplayed();
-        textUnderCustomItem.isDisplayed();
-        textUnderMultiIcon.isDisplayed();
-        textUnderBaseIcon.isDisplayed();
         Assert.assertEquals(textUderPractiseIcon.getText(),
                 "To include good practices\n" +
                         "and ideas from successful\n" +
@@ -117,12 +108,10 @@ public class TestIndexPage {
 //        9. Assert a text of the main header
         WebElement mainText = driver.findElement(By.xpath(".//div[@class = 'main-content']//h3[@name = 'main-title']"));
 
-        mainText.isDisplayed();
         Assert.assertEquals(mainText.getText(), "EPAM FRAMEWORK WISHES…");
 
 //        10. Assert a text of the sub header
         WebElement jdiText = driver.findElement(By.xpath(".//div[@class = 'main-content']//p[@name = 'jdi-text']"));
-        jdiText.isDisplayed();
 
         Assert.assertEquals(jdiText.getText(), "LOREM IPSUM DOLOR SIT AMET, " +
                 "CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA." +
@@ -132,17 +121,16 @@ public class TestIndexPage {
 //         11. Assert that JDI GITHUB is a link and has a proper URL
         WebElement gitLinkToJDI = driver.findElement(By.xpath(".//div[@class = 'main-content']//h3[@class = 'text-center']/a"));
 
-        gitLinkToJDI.isDisplayed();
         Assert.assertEquals(gitLinkToJDI.getText(), "JDI GITHUB");
         Assert.assertEquals(gitLinkToJDI.getAttribute("href"), "https://github.com/epam/JDI");
 
 //        12.Assert that there is Left Section
         WebElement leftSection = driver.findElement(By.xpath(".//body/div[@class ='wrapper']/div[@name = 'navigation-sidebar']"));
-        leftSection.isDisplayed();
+        assertTrue(leftSection.isDisplayed());
 
 //        13. Assert that there is Footer
         WebElement footer = driver.findElement(By.xpath(".//body/footer"));
-        footer.isDisplayed();
+        assertTrue(footer.isDisplayed());
     }
 
 
