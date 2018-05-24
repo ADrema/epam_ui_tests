@@ -93,10 +93,10 @@ public class TestIndexPage {
         List<String> textContent = new ArrayList<String>();
         List<WebElement> elements = driver.findElements(By.xpath(".//div[@class = 'row clerafix benefits']/div"));
 
-            for (WebElement element : elements){
-                String textValue = element.getText();
-                textContent.add(textValue);
-            }
+        for (WebElement element : elements) {
+            String textValue = element.getText();
+            textContent.add(textValue);
+        }
 
         assertEquals(textContent.get(0),
                 "To include good practices\n" +
