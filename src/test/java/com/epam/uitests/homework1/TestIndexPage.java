@@ -20,7 +20,6 @@ import static org.testng.Assert.assertTrue;
 public class TestIndexPage {
     private WebDriver driver;
 
-
     @BeforeMethod
     public void beforeMethod() {
 //        Set options to avoid browser pop-up windows
@@ -51,7 +50,6 @@ public class TestIndexPage {
         driver.findElement(id("Name")).sendKeys("epam");
         driver.findElement(id("Password")).sendKeys("1234");
         driver.findElement(By.className("fa-sign-in")).click();
-
 
 //        4. Assert User name in the left-top side of screen that user is
         assertEquals(driver.findElement(By.xpath(".//div[@class = 'profile-photo']/span[@ui = 'label']")).getText(), "PITER CHAILOVSKII");
@@ -104,6 +102,7 @@ public class TestIndexPage {
 
 //         11. Assert that JDI GITHUB is a link and has a proper URL
         WebElement gitLinkToJDI = driver.findElement(By.xpath(".//div[@class = 'main-content']//h3[@class = 'text-center']/a"));
+
         assertEquals(gitLinkToJDI.getText(), "JDI GITHUB");
         assertEquals(gitLinkToJDI.getAttribute("href"), "https://github.com/epam/JDI");
 
