@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -18,15 +19,21 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class TestIndexPage {
-    private WebDriver driver;
 
-    @BeforeMethod
-    public void beforeMethod() {
-//        Set options to avoid browser pop-up windows
-        ChromeOptions options = new ChromeOptions();
+    private WebDriver driver;
+    private ChromeOptions options;
+
+    @BeforeClass
+    public void beforeClass(){
+
+        options = new ChromeOptions();
         options.addArguments("--disable-extensions");
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+    }
+
+    @BeforeMethod
+    public void beforeMethod() {
 
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
@@ -112,6 +119,5 @@ public class TestIndexPage {
 //        13. Assert that there is Footer
         assertTrue(driver.findElement(By.xpath(".//body/footer")).isDisplayed());
     }
-
 
 }
