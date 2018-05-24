@@ -5,9 +5,7 @@ package com.epam.uitests.homework2.ex1;
  * The test must be developed with help of the DataProvider.
  * Run it in the parallel by methods through the configuring parameters
  * in a @DataProvider annotation.
- * */
-
-
+*/
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,21 +33,18 @@ public class TestTextUsingDataProvider {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.navigate().to("https://epam.github.io/JDI/index.html");
-
-
     }
 
     @AfterTest
     public void afterTest(){
         driver.close();
         driver.quit();
-
     }
 
     @DataProvider
     public Object[][] textElementsProvide() {
-        List<String> elementsText = getElementsText();
 
+        List<String> elementsText = getElementsText();
         return new Object[][] {
                 {elementsText.get(0), ("To include good practices\n" +
                                                 "and ideas from successful\n" +
@@ -71,11 +66,8 @@ public class TestTextUsingDataProvider {
 
 //        2. Text content validations
         assertEquals(actualValue,expectedValue);
-
-
-
     }
-//
+
     public List<String> getElementsText(){
         List<String> textContent = new ArrayList<String>();
         List<WebElement> elements = driver.findElements(By.xpath(".//div[@class = 'row clerafix benefits']/div"));
