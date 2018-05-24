@@ -59,8 +59,6 @@ public class TestTextUsingDataProvider {
         };
     }
 
-
-
     @Test (dataProvider = "textElementsProvide")
     public void textValidationTest (String actualValue, String expectedValue){
 
