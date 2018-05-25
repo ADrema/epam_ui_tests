@@ -17,9 +17,7 @@ import static org.testng.Assert.assertEquals;
 
 public class TestTextUsingDataProvider{
 
-//    private WebDriver driver;
     private ChromeOptions options;
-
     private List<String> textContent = Arrays.asList(
              "To include good practices\n" +
              "and ideas from successful\n" +
