@@ -15,33 +15,33 @@ import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
-public class TestTextUsingDataProvider{
+public class TestTextUsingDataProvider {
 
     private ChromeOptions options;
     private List<String> textContent = Arrays.asList(
-             "To include good practices\n" +
-             "and ideas from successful\n" +
-             "EPAM project",
-             "To be flexible and\n" +
-             "customizable",
-             "To be multiplatform",
-             "Already have good base\n" +
-             "(about 20 internal and\n" +
-             "some external projects),\n" +
-             "wish to get more…"
+            "To include good practices\n" +
+                    "and ideas from successful\n" +
+                    "EPAM project",
+            "To be flexible and\n" +
+                    "customizable",
+            "To be multiplatform",
+            "Already have good base\n" +
+                    "(about 20 internal and\n" +
+                    "some external projects),\n" +
+                    "wish to get more…"
     );
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         options = new ChromeOptions();
         options.addArguments("--disable-extensions");
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
     }
 
-    @DataProvider (parallel = true)
+    @DataProvider(parallel = true)
     public Object[][] textElementsProvider() {
-        return new Object[][] {
+        return new Object[][]{
                 {0, textContent.get(0)},
                 {1, textContent.get(1)},
                 {2, textContent.get(2)},
@@ -49,20 +49,17 @@ public class TestTextUsingDataProvider{
         };
     }
 
-    @Test (dataProvider = "textElementsProvider")
-    public void textValidationTest (int i, String expectedValue){
-
+    @Test(dataProvider = "textElementsProvider")
+    public void textValidationTest(int i, String expectedValue) {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-
-//      Open HomePage
         driver.navigate().to("https://epam.github.io/JDI/index.html");
 
 //       Text content validations
         List<WebElement> elements = driver.findElements(By.xpath(".//div[@class = 'row clerafix benefits']/div"));
         assertEquals(elements.get(i).getText(), expectedValue);
-        driver.quit();
 
+        driver.quit();
     }
 }
 
