@@ -1,6 +1,6 @@
 package com.epam.uitests.homework3;
 
-import com.epam.ui.pageObjects.HomePage;
+import com.epam.ui.pageObjects.selenium.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -85,7 +85,6 @@ public class TestIndexPage {
 
 //         11. Assert that JDI GITHUB is a link and has a proper URL
         homePage.checkJDIurlEqualsTo("https://github.com/epam/JDI");
-//        assertEquals(gitLinkToJDI.getText(), "JDI GITHUB");
 
 //        12.Assert that there is Left Section
         homePage.checkLeftSectionIsDisplayed();

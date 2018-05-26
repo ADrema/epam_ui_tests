@@ -1,4 +1,4 @@
-package com.epam.ui.pageObjects;
+package com.epam.ui.pageObjects.selenium;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
