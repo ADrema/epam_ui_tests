@@ -12,7 +12,7 @@ import static org.testng.Assert.assertTrue;
 public class HomePage {
     private WebDriver driver;
 
-    @FindBy(xpath = ".//body/div[@class ='wrapper']/div[@name = 'navigation-sidebar']")
+    @FindBy(css = ".uui-side-bar[name='navigation-sidebar']")
     private WebElement leftSection;
 
     @FindBy(xpath = ".//body/footer")
@@ -30,25 +30,25 @@ public class HomePage {
     @FindBy(className = "fa-sign-in")
     private WebElement submitButton;
 
-    @FindBy(xpath = ".//div[@class = 'profile-photo']/span[@ui = 'label']")
+    @FindBy(css = ".profile-photo > span")
     private WebElement user;
 
-    @FindBy(xpath = ".//nav[@role = 'navigation']//ul[contains(@class, 'navbar-nav')][0]/li/a")
+    @FindBy(css = ".nav.navbar-nav > li > a")
     private List<WebElement> navBarItems;
 
-    @FindBy(xpath = ".//div[@class = 'row clerafix benefits']//div[contains(@class, 'benefit-icon')]//a")
+    @FindBy(css = ".benefits .icons-benefit")
     private List<WebElement> imageElements;
 
-    @FindBy(xpath = ".//div[@class = 'row clerafix benefits']/div")
+    @FindBy(css = ".benefits .benefit-txt")
     private List<WebElement> textsUndrImages;
 
-    @FindBy(xpath = ".//div[@class = 'main-content']//h3[@name = 'main-title']")
+    @FindBy(css = ".main-title")
     private WebElement headerText;
 
-    @FindBy(xpath = ".//div[@class = 'main-content']//p[@name = 'jdi-text']")
+    @FindBy(css = ".main-txt")
     private WebElement subHeaderText;
 
-    @FindBy(xpath = ".//div[@class = 'main-content']//h3[@class = 'text-center']/a")
+    @FindBy(css = ".main-content .text-center a")
     private WebElement jdiGitHubLink;
 
     public HomePage(WebDriver webDriver) {
@@ -72,7 +72,6 @@ public class HomePage {
 
     public void checkTextsOfHeaderSection(List<String> itemsText) {
         for (WebElement element : navBarItems) {
-            System.out.println(element.getText());
             assertTrue(itemsText.contains(element.getText()));
         }
     }
@@ -108,4 +107,5 @@ public class HomePage {
     public void checkFooterIsDisplayed() {
         assertTrue(footer.isDisplayed());
     }
+
 }
