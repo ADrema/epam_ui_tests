@@ -13,7 +13,6 @@ import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class HomePage {
-//    private WebDriver driver;
 
     @FindBy(how = How.CSS, using = ".uui-side-bar[name='navigation-sidebar']")
     private SelenideElement leftSection;
@@ -105,9 +104,15 @@ public class HomePage {
 
     public DifferentElementsPage openDifferentElements() {
         $(".uui-side-bar[name = 'navigation-sidebar']  .sub a[href = 'different-elements.html']").click();
-        return open ("",DifferentElementsPage.class);
+        return open ("https://epam.github.io/JDI/different-elements.html",DifferentElementsPage.class);
 //        TBD
     }
+    public DatesPage openDatesPage() {
+        $(".uui-side-bar[name = 'navigation-sidebar']  .sub a[href = 'different-elements.html']").click();
+        return open ("https://epam.github.io/JDI/dates.html",DatesPage.class);
+//        TBD
+    }
+
 
     //    public void checkServiceOptions(ElementsCollection collection) {
 //        ;
