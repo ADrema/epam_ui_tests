@@ -8,31 +8,27 @@ import org.openqa.selenium.support.How;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+import static org.testng.Assert.assertEquals;
 
 public class HomePage {
 
     @FindBy(how = How.CSS, using = ".uui-side-bar[name='navigation-sidebar']")
     private SelenideElement leftSection;
 
-    @FindBy(how = How.CSS, using = "title")
-    public SelenideElement title;
-
-    @FindBy(how = How.TAG_NAME, using =  "footer")
+    @FindBy(how = How.TAG_NAME, using = "footer")
     private SelenideElement footer;
 
-    @FindBy(how = How.CSS, using =  ".profile-photo")
+    @FindBy(how = How.CSS, using = ".profile-photo")
     private SelenideElement profileIcon;
 
     @FindBy(how = How.ID, using = "Name")
     private SelenideElement login;
 
-    @FindBy(how = How.ID, using =  "Password")
+    @FindBy(how = How.ID, using = "Password")
     private SelenideElement password;
 
-    @FindBy(how = How.CLASS_NAME, using =  "fa-sign-in")
+    @FindBy(how = How.CLASS_NAME, using = "fa-sign-in")
     private SelenideElement submitButton;
 
     @FindBy(how = How.CSS, using = ".profile-photo > span")
@@ -59,13 +55,6 @@ public class HomePage {
     @FindBy(how = How.CSS, using = ".uui-side-bar[name = 'navigation-sidebar']  .sub a[href = 'different-elements.html']")
     private SelenideElement serviceDifferentElemetsPageLink;
 
-
-
-
-//    public void checkPageTitleEqualsTo(String title) {
-//        assertEquals(.getTitle(), title);
-//    }
-
     public void signIn(String loginValue, String passwordValue) {
         profileIcon.click();
         login.sendKeys(loginValue);
@@ -74,24 +63,24 @@ public class HomePage {
     }
 
     public void checkPageTitleEqualsTo(String titleValue) {
-        title.shouldHave(Condition.exactText(titleValue));
+        assertEquals(title(), titleValue);
     }
 
     public void checkUserName(String userNameValue) {
         user.shouldHave(Condition.exactText(userNameValue));
     }
 
-    public void checkBenefits(int size){
+    public void checkBenefits(int size) {
         imageElements.shouldHaveSize(size);
         textsUndrImages.shouldHaveSize(size);
     }
 
-    public void checkMainContentTexts(){
+    public void checkMainContentTexts() {
         headerText.shouldBe(Condition.visible);
         subHeaderText.shouldBe(Condition.visible);
     }
 
-    public void checkNavBarServiceOptions(List<String > serviceTabContent){
+    public void checkNavBarServiceOptions(List<String> serviceTabContent) {
         $(".uui-header .nav li.dropdown").click();
         ElementsCollection serviceTab = $$(".uui-header .nav li.dropdown .dropdown-menu a");
         checkElementsTexts(serviceTab, serviceTabContent);
@@ -104,33 +93,20 @@ public class HomePage {
 
     public DifferentElementsPage openDifferentElements() {
         $(".uui-side-bar[name = 'navigation-sidebar']  .sub a[href = 'different-elements.html']").click();
-        return open ("https://epam.github.io/JDI/different-elements.html",DifferentElementsPage.class);
-//        TBD
+        return open("https://epam.github.io/JDI/different-elements.html", DifferentElementsPage.class);
     }
+
     public DatesPage openDatesPage() {
         $(".uui-side-bar[name = 'navigation-sidebar']  .sub a[href = 'different-elements.html']").click();
-        return open ("https://epam.github.io/JDI/dates.html",DatesPage.class);
-//        TBD
+        return open("https://epam.github.io/JDI/dates.html", DatesPage.class);
     }
 
-
-    //    public void checkServiceOptions(ElementsCollection collection) {
-//        ;
-//        }
-//    }
-//
-//    public void checkTextsOfHeaderSection(List<String> itemsText) {
-//        for (WebElement element : navBarItems) {
-//            assertTrue(itemsText.contains(element.getText()));
-//        }
-//    }
-//
     public void check4imagesArePresented() {
         for (SelenideElement image : imageElements) {
             image.shouldBe(Condition.visible);
         }
     }
-//
+
     public void check4TextsUnderImages(List<String> textContent) {
         checkElementsTexts(textsUndrImages, textContent);
     }

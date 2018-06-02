@@ -9,8 +9,8 @@ public class TestBaseForSelenide {
     public void beforeSuite() {
         Configuration.browser = "CHROME";
         Configuration.screenshots = false;
-        Configuration.timeout = 4500;
-        Configuration.pollingInterval = 150;
+        Configuration.timeout = 5000;
+        Configuration.pollingInterval = 2000;
         Configuration.collectionsPollingInterval = 300;
 
         Configuration.pageLoadStrategy = "normal";
