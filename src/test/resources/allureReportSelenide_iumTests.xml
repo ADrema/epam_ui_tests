@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite3"  verbose="1">
+
+    <test name="RegressionTestsSet">
+
+        <groups>
+
+            <run>
+                <include name="Allure"/>
+            </run>
+
+        </groups>
+
+        <packages>
+            <package name="com.epam.uitests.homework5.ex2"/>
+        </packages>
+
+    </test>
+
+</suite>
