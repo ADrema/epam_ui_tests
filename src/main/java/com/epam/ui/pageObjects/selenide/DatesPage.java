@@ -12,8 +12,6 @@ import static org.testng.Assert.assertEquals;
 
 public class DatesPage {
 
-    private int expectedCoordinate;
-
     @FindBy(how = How.CSS, using = ".range-from input")
     private ElementsCollection rangeForms;
 
@@ -50,7 +48,6 @@ public class DatesPage {
             additionalClickRightBorder(sliders.get(0), diffLS, expectedLS, sliders.get(1), diffRS, expectedRS);
         } else if ((sliderValueL == sliderValueR) & (sliderValueL == 0)) {
             reverseSteps(sliders.get(0), diffLS, expectedLS, sliders.get(1), diffRS, expectedRS);
-
         } else
             directSteps(sliders.get(0), diffLS, expectedLS, sliders.get(1), diffRS, expectedRS);
     }
@@ -77,9 +74,7 @@ public class DatesPage {
     public static void directSteps(SelenideElement elementL, int diffL, int expectedL, SelenideElement elementR, int diffR, int expectedR) {
         actions().dragAndDropBy(elementL, diffL, 0).perform();
         lastLogRecord.shouldHave(Condition.text("Range 2(From):" + expectedL + " link clicked"));
-
         actions().dragAndDropBy(elementR, diffR, 0).perform();
         lastLogRecord.shouldHave(Condition.text("Range 2(To):" + expectedR + " link clicked"));
     }
-
 }
