@@ -1,6 +1,8 @@
 package com.epam.uitests.homework5.ex1;
 
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,15 +21,15 @@ import static org.openqa.selenium.By.id;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-//@Feature("Introduction to Automation testing with Java")
-//@Story("Test Home page")
+@Feature("Introduction to Automation testing with Java")
+@Story("Test Home page")
 public class AllureTestIndexPage {
 
     private WebDriver driver;
     private ChromeOptions options;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
 
         options = new ChromeOptions();
         options.addArguments("--disable-extensions");
@@ -46,7 +48,6 @@ public class AllureTestIndexPage {
     public void afterMethod() {
         driver.quit();
     }
-
 
     @Test(groups = "Allure1")
     public void IndexPageTest() {
@@ -122,5 +123,4 @@ public class AllureTestIndexPage {
 //        13. Assert that there is Footer
         assertTrue(driver.findElement(By.xpath(".//body/footer")).isDisplayed());
     }
-
 }

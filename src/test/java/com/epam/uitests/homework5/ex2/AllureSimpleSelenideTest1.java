@@ -26,7 +26,7 @@ public class AllureSimpleSelenideTest1 extends TestBaseForSelenide {
             "Simple Table", "User Table", "Table with pages",
             "Different elements", "Performance");
 
-    @Test (groups = "Allure")
+    @Test(groups = "Allure")
     public void testIndexPageWithSelenide() {
 //        1. Open test site by URL
         HomePage homePage = open("https://epam.github.io/JDI", HomePage.class);
@@ -37,11 +37,11 @@ public class AllureSimpleSelenideTest1 extends TestBaseForSelenide {
 //        3. Perform login
         homePage.signIn("epam", "1234");
 
-//    4. Assert User name in the left-top side of screen that user is loggined
+//        4. Assert User name in the left-top side of screen that user is loggined
 //        homePage.
         homePage.checkUserName("PITER CHAILOVSKII");
 //
-//      5. Check interface on Home page, it contains all needed elements: 4 - pictures, 4 texts under them, 2 text above
+//        5. Check interface on Home page, it contains all needed elements: 4 - pictures, 4 texts under them, 2 text above
         homePage.checkBenefits(4);
         homePage.checkMainContentTexts();
 //
@@ -67,28 +67,20 @@ public class AllureSimpleSelenideTest1 extends TestBaseForSelenide {
 
 //        12. Select checkboxes
 //        13. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-        dePage.selectCheckBoxElement(CheckBoxesEnum.WATER.index);
-        dePage.verifyCheckboxIsSelected(CheckBoxesEnum.WATER.index);
-        dePage.selectCheckBoxElement(CheckBoxesEnum.WIND.index);
-        dePage.verifyCheckboxIsSelected(CheckBoxesEnum.WIND.index);
+        dePage.clickCheckboxElement(CheckBoxesEnum.WATER.index, true);
+        dePage.clickCheckboxElement(CheckBoxesEnum.WIND.index, true);
 
 //        14. Select radio
+//        15. Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
         dePage.selectRadioElement(RadioButtonEnum.SELEN.index);
 
-//        15. Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
-        dePage.verifyRadioElementIsSelected(RadioButtonEnum.SELEN.index);
-//
 //        16. Select in dropdown
-        dePage.selectDropDownElement(SelectEnum.YELLOW.index);
-
 //        17. Assert that for dropdown there is a log row and value is corresponded to the selected value.
-        dePage.verifyDropDownItemIsSelected(SelectEnum.YELLOW.index);
+        dePage.selectDropDownElement(SelectEnum.YELLOW.index);
 
 //        18. Unselect and assert
 //        19. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-        dePage.unselectCheckboxElement(CheckBoxesEnum.WATER.index);
-        dePage.verifyCheckboxIsUnselected(CheckBoxesEnum.WATER.index);
-        dePage.unselectCheckboxElement(CheckBoxesEnum.WIND.index);
-        dePage.verifyCheckboxIsUnselected(CheckBoxesEnum.WIND.index);
+        dePage.clickCheckboxElement(CheckBoxesEnum.WATER.index, false);
+        dePage.clickCheckboxElement(CheckBoxesEnum.WIND.index, false);
     }
 }

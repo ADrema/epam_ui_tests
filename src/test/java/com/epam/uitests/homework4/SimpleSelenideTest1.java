@@ -30,11 +30,11 @@ public class SimpleSelenideTest1 extends TestBaseForSelenide {
 //        3. Perform login
         homePage.signIn("epam", "1234");
 
-//    4. Assert User name in the left-top side of screen that user is loggined
+//        4. Assert User name in the left-top side of screen that user is loggined
 //        homePage.
         homePage.checkUserName("PITER CHAILOVSKII");
 //
-//      5. Check interface on Home page, it contains all needed elements: 4 - pictures, 4 texts under them, 2 text above
+//        5. Check interface on Home page, it contains all needed elements: 4 - pictures, 4 texts under them, 2 text above
         homePage.checkBenefits(4);
         homePage.checkMainContentTexts();
 //
@@ -47,7 +47,7 @@ public class SimpleSelenideTest1 extends TestBaseForSelenide {
 //        8. Open through the header menu Service -> Different Elements Page
         DifferentElementsPage dePage = homePage.openDifferentElements();
 
-        //        9. Check interface on Different elements page, it contains all needed elements
+//        9. Check interface on Different elements page, it contains all needed elements
         dePage.checkNumberOfCheckBoxElements(4);
         dePage.checkNumberOfRadioButtonElements(4);
         dePage.checkNumberOfButtonsElements(2);

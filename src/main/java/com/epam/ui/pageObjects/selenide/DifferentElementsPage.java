@@ -46,6 +46,9 @@ public class DifferentElementsPage {
     public void checkNumberOfRadioButtonElements(int amount) {
         radioButtonsBoard.shouldHaveSize(amount);
     }
+    public void checkDropDownMwnuIsPresent(){
+        dropDownEntryMode.should(Condition.visible);
+    }
 
     @Step("Check interface on Different elements page, Button elements are presented")
     public void checkNumberOfButtonsElements(int amount) {
@@ -62,45 +65,26 @@ public class DifferentElementsPage {
         navBar.shouldBe(Condition.visible);
     }
 
-    @Step("Select checkbox")
-    public void selectCheckBoxElement(int index) {
-        checkBoxesBoard.get(index).click();
+    public void clickCheckboxElement(int index, boolean action) {
+        if (action == true) {
+            checkBoxesBoard.get(index).click();
+            lastLogRecord.shouldHave(Condition.text(CheckBoxesEnum.getTextValue(index) + ": condition changed to true"));
+        } else if (action == false) {
+            checkBoxesBoard.get(index).click();
+            lastLogRecord.shouldHave(Condition.text(CheckBoxesEnum.getTextValue(index) + ": condition changed to false"));
+        }
     }
 
-    @Step("Assert that for the checkbox there is an individual log row")
-    public void verifyCheckboxIsSelected(int index) {
-        lastLogRecord.shouldHave(Condition.text(CheckBoxesEnum.getTextValue(index) + ": condition changed to true"));
-    }
-
-    @Step("Select radioButton elemet")
+    @Step("Select radioButton element and check log row")
     public void selectRadioElement(int index) {
         radioButtonsBoard.get(index).click();
-    }
-
-    @Step("Assert that for radiobutton there is a log row")
-    public void verifyRadioElementIsSelected(int index) {
         lastLogRecord.shouldHave(Condition.text("metal: value changed to " + RadioButtonEnum.getTextValue(index)));
     }
 
-    @Step("Select in dropdown")
+    @Step("Select in dropdown and check log row")
     public void selectDropDownElement(int index) {
         dropDownEntryMode.click();
         dropDownElement.get(index).click();
-    }
-
-    @Step("Assert that for dropdown there is a log row ")
-    public void verifyDropDownItemIsSelected(int index) {
         lastLogRecord.shouldHave(Condition.text("Colors: value changed to " + SelectEnum.getTextValue(index)));
-    }
-
-    @Step("Unselect and assert")
-    //    TODO: Add condition, to check that it was selected/unselected. The same for other controls
-    public void unselectCheckboxElement(int index) {
-        checkBoxesBoard.get(index).click();
-    }
-
-    @Step("Assert that for the checkbox there is an individual log row")
-    public void verifyCheckboxIsUnselected(int index) {
-        lastLogRecord.shouldHave(Condition.text(CheckBoxesEnum.getTextValue(index) + ": condition changed to false"));
     }
 }

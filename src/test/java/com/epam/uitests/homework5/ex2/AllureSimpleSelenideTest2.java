@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.open;
 @Listeners({AllureAttachmentListener.class})
 public class AllureSimpleSelenideTest2 extends TestBaseForSelenide {
 
-    @Test (groups = "Allure")
+    @Test(groups = "Allure")
     public void testIndexPageWithSelenide() throws InterruptedException {
 //        1. Open test site by URL
         HomePage homePage = open("https://epam.github.io/JDI", HomePage.class);
@@ -45,6 +45,7 @@ public class AllureSimpleSelenideTest2 extends TestBaseForSelenide {
 //        10. Using drag-and-drop set Range sliders. left sliders - the most rigth position, right slider - the most rigth position.
 //        11. Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.moveSliders(100, 100);
+
 //        12. Using drag-and-drop set Range sliders.
 //        13. Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.moveSliders(30, 70);
