@@ -15,7 +15,7 @@ public class HomePage {
     @FindBy(css = ".uui-side-bar[name='navigation-sidebar']")
     private WebElement leftSection;
 
-    @FindBy(xpath = ".//body/footer")
+    @FindBy(css = "footer")
     private WebElement footer;
 
     @FindBy(className = "profile-photo")
@@ -70,6 +70,10 @@ public class HomePage {
         assertEquals(user.getText(), userNameValue);
     }
 
+    public void setDriver(WebDriver driver) {
+        this.driver = driver;
+    }
+
     public void checkTextsOfHeaderSection(List<String> itemsText) {
         for (WebElement element : navBarItems) {
             assertTrue(itemsText.contains(element.getText()));
@@ -107,5 +111,4 @@ public class HomePage {
     public void checkFooterIsDisplayed() {
         assertTrue(footer.isDisplayed());
     }
-
 }

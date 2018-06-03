@@ -1,8 +1,6 @@
 package com.epam.uitests.homework5.ex1;
 
 
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,8 +18,9 @@ import java.util.List;
 import static org.openqa.selenium.By.id;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
-@Feature("Introduction to Automation testing with Java")
-@Story("Test Home page")
+
+//@Feature("Introduction to Automation testing with Java")
+//@Story("Test Home page")
 public class AllureTestIndexPage {
 
     private WebDriver driver;
@@ -114,7 +113,7 @@ public class AllureTestIndexPage {
 //         11. Assert that JDI GITHUB is a link and has a proper URL
         WebElement gitLinkToJDI = driver.findElement(By.xpath(".//div[@class = 'main-content']//h3[@class = 'text-center']/a"));
 
-        assertEquals(gitLinkToJDI.getText(), "JDI GITHUB1");
+        assertEquals(gitLinkToJDI.getText(), "JDI GITHUB");
         assertEquals(gitLinkToJDI.getAttribute("href"), "https://github.com/epam/JDI");
 
 //        12.Assert that there is Left Section

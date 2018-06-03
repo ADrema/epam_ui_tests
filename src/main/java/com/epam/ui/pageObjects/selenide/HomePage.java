@@ -3,6 +3,7 @@ package com.epam.ui.pageObjects.selenide;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -55,6 +56,7 @@ public class HomePage {
     @FindBy(how = How.CSS, using = ".uui-side-bar[name = 'navigation-sidebar']  .sub a[href = 'different-elements.html']")
     private SelenideElement serviceDifferentElemetsPageLink;
 
+    @Step("Perform login")
     public void signIn(String loginValue, String passwordValue) {
         profileIcon.click();
         login.sendKeys(loginValue);
@@ -62,14 +64,17 @@ public class HomePage {
         submitButton.click();
     }
 
+    @Step("Assert Browser title")
     public void checkPageTitleEqualsTo(String titleValue) {
         assertEquals(title(), titleValue);
     }
 
+    @Step("Assert User name in the left-top side of screen that user is loggined")
     public void checkUserName(String userNameValue) {
         user.shouldHave(Condition.exactText(userNameValue));
     }
 
+    @Step ("Check interface on Home page, it contains all needed elements:")
     public void checkBenefits(int size) {
         imageElements.shouldHaveSize(size);
         textsUndrImages.shouldHaveSize(size);
@@ -80,17 +85,19 @@ public class HomePage {
         subHeaderText.shouldBe(Condition.visible);
     }
 
+    @Step("Click on 'Service' subcategory in the header and check that drop down contains options")
     public void checkNavBarServiceOptions(List<String> serviceTabContent) {
         $(".uui-header .nav li.dropdown").click();
         ElementsCollection serviceTab = $$(".uui-header .nav li.dropdown .dropdown-menu a");
         checkElementsTexts(serviceTab, serviceTabContent);
     }
-
+@Step("Click on Service subcategory in the left section and check that drop down contains options")
     public void checkSideBarServiceOptions(List<String> serviceTabContent) {
         ElementsCollection sideBarServices = $$(".uui-side-bar[name = 'navigation-sidebar']  .sub a");
         checkElementsTexts(sideBarServices, serviceTabContent);
     }
 
+    @Step("Open through the header menu Service -> Different Elements Page")
     public DifferentElementsPage openDifferentElements() {
         $(".uui-side-bar[name = 'navigation-sidebar']  .sub a[href = 'different-elements.html']").click();
         return open("https://epam.github.io/JDI/different-elements.html", DifferentElementsPage.class);
