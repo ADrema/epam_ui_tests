@@ -1,9 +1,12 @@
 package com.epam.ui.base;
 
 import com.codeborne.selenide.Configuration;
+import com.epam.ui.listeners.AllureAttachmentListener;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 
+@Listeners({AllureAttachmentListener.class})
 public class TestBaseForSelenide {
     @BeforeSuite
     public void beforeSuite() {
