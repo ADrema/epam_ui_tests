@@ -2,10 +2,14 @@ package com.epam.ui.base;
 
 import com.codeborne.selenide.Configuration;
 import com.epam.ui.listeners.AllureAttachmentListener;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 
+@Story("Implement on Selenide framework in Page Object pattern")
+@Feature("Test for Different Elements page")
 @Listeners({AllureAttachmentListener.class})
 public class TestBaseForSelenide {
     @BeforeSuite

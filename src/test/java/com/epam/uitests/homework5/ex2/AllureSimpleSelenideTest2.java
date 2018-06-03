@@ -3,15 +3,10 @@ package com.epam.uitests.homework5.ex2;
 import com.epam.ui.base.TestBaseForSelenide;
 import com.epam.ui.pageObjects.selenide.DatesPage;
 import com.epam.ui.pageObjects.selenide.HomePage;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
 
-@Story("Implement on Selenide framework in Page Object pattern")
-@Feature("Test for Dates page")
-//@Listeners({AllureAttachmentListener.class})
 public class AllureSimpleSelenideTest2 extends TestBaseForSelenide {
 
     @Test(groups = "Allure")
