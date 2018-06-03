@@ -56,6 +56,18 @@ public class HomePage {
     @FindBy(how = How.CSS, using = ".uui-side-bar[name = 'navigation-sidebar']  .sub a[href = 'different-elements.html']")
     private SelenideElement serviceDifferentElemetsPageLink;
 
+    @FindBy(how = How.CSS, using = ".uui-header .nav li.dropdown")
+    private SelenideElement serviceDropDownMenu;
+
+    @FindBy(how = How.CSS, using = ".uui-side-bar[name = 'navigation-sidebar']  .sub a")
+    private ElementsCollection serviceTab;
+
+    @FindBy(how = How.CSS, using = ".uui-side-bar[name = 'navigation-sidebar']  .sub a" )
+    private ElementsCollection sideBarServices;
+
+    @FindBy(how = How.CSS, using = ".uui-side-bar[name = 'navigation-sidebar']  .sub a[href = 'different-elements.html']")
+    private SelenideElement navigationBar;
+
     @Step("Perform login")
     public void signIn(String loginValue, String passwordValue) {
         profileIcon.click();
@@ -74,7 +86,7 @@ public class HomePage {
         user.shouldHave(Condition.exactText(userNameValue));
     }
 
-    @Step ("Check interface on Home page, it contains all needed elements:")
+    @Step("Check interface on Home page, it contains all needed elements:")
     public void checkBenefits(int size) {
         imageElements.shouldHaveSize(size);
         textsUndrImages.shouldHaveSize(size);
@@ -87,24 +99,25 @@ public class HomePage {
 
     @Step("Click on 'Service' subcategory in the header and check that drop down contains options")
     public void checkNavBarServiceOptions(List<String> serviceTabContent) {
-        $(".uui-header .nav li.dropdown").click();
-        ElementsCollection serviceTab = $$(".uui-header .nav li.dropdown .dropdown-menu a");
+        serviceDropDownMenu.click();
+//        ElementsCollection serviceTab = $$(".uui-header .nav li.dropdown .dropdown-menu a");
         checkElementsTexts(serviceTab, serviceTabContent);
     }
-@Step("Click on Service subcategory in the left section and check that drop down contains options")
+
+    @Step("Click on Service subcategory in the left section and check that drop down contains options")
     public void checkSideBarServiceOptions(List<String> serviceTabContent) {
-        ElementsCollection sideBarServices = $$(".uui-side-bar[name = 'navigation-sidebar']  .sub a");
+//        ElementsCollection sideBarServices = $$(".uui-side-bar[name = 'navigation-sidebar']  .sub a");
         checkElementsTexts(sideBarServices, serviceTabContent);
     }
 
     @Step("Open through the header menu Service -> Different Elements Page")
     public DifferentElementsPage openDifferentElements() {
-        $(".uui-side-bar[name = 'navigation-sidebar']  .sub a[href = 'different-elements.html']").click();
+        navigationBar.click();
         return open("https://epam.github.io/JDI/different-elements.html", DifferentElementsPage.class);
     }
 
     public DatesPage openDatesPage() {
-        $(".uui-side-bar[name = 'navigation-sidebar']  .sub a[href = 'different-elements.html']").click();
+        navigationBar.click();
         return open("https://epam.github.io/JDI/dates.html", DatesPage.class);
     }
 
