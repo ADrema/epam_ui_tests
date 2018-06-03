@@ -11,7 +11,7 @@
     <properties>
         <allure.version>2.6.0</allure.version>
         <aspectj.version>1.8.12</aspectj.version>
-        <suiteXmlFile>allureReportSelenide_iumTests.xml</suiteXmlFile>
+        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
     </properties>
 
     <dependencies>
