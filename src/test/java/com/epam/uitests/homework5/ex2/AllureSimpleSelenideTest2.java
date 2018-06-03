@@ -3,9 +3,12 @@ package com.epam.uitests.homework5.ex2;
 import com.epam.ui.base.TestBaseForSelenide;
 import com.epam.ui.pageObjects.selenide.DatesPage;
 import com.epam.ui.pageObjects.selenide.HomePage;
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
+
+@Feature("Test for Dates page")
 
 public class AllureSimpleSelenideTest2 extends TestBaseForSelenide {
 

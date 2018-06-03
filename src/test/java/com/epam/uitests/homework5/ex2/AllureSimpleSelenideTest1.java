@@ -6,6 +6,7 @@ import com.epam.ui.enumObjects.differentElementsPage.RadioButtonEnum;
 import com.epam.ui.enumObjects.differentElementsPage.SelectEnum;
 import com.epam.ui.pageObjects.selenide.DifferentElementsPage;
 import com.epam.ui.pageObjects.selenide.HomePage;
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selenide.open;
 
+@Feature("Test for Different Elements page")
 public class AllureSimpleSelenideTest1 extends TestBaseForSelenide {
 
     private List<String> serviceTabContent = Arrays.asList("Support", "Dates", "Complex Table",
