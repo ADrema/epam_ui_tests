@@ -38,6 +38,7 @@ public class SimpleSelenideTest2 extends TestBaseForSelenide {
 //        10. Using drag-and-drop set Range sliders. left sliders - the most rigth position, right slider - the most rigth position.
 //        11. Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.moveSliders(100, 100);
+
 //        12. Using drag-and-drop set Range sliders.
 //        13. Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.moveSliders(30, 70);
