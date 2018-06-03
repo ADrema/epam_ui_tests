@@ -76,6 +76,6 @@ public class AllureSimpleSelenideTest1 extends TestBaseForSelenide {
 //        18. Unselect and assert
 //        19. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
         dePage.clickCheckboxElement(CheckBoxesEnum.WATER.index, false);
-        dePage.clickCheckboxElement(CheckBoxesEnum.WIND.index, false);
+        dePage.clickCheckboxElement(CheckBoxesEnum.WIND.index, true);
     }
 }
