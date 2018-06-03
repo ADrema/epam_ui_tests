@@ -30,7 +30,6 @@ public class AllureTestIndexPage {
 
     @BeforeClass
     public void beforeClass() {
-
         options = new ChromeOptions();
         options.addArguments("--disable-extensions");
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
@@ -39,7 +38,6 @@ public class AllureTestIndexPage {
 
     @BeforeMethod
     public void beforeMethod() {
-
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
     }
