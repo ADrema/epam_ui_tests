@@ -15,10 +15,9 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class SimpleSelenideTest1 extends TestBaseForSelenide {
 
-//    TODO: Cecge to Enum
     private List<String> serviceTabContent = Arrays.asList("Support", "Dates", "Complex Table",
-                                                            "Simple Table", "User Table","Table with pages",
-        "Different elements", "Performance");
+            "Simple Table", "User Table", "Table with pages",
+            "Different elements", "Performance");
 
     @Test
     public void testIndexPageWithSelenide() {
@@ -26,8 +25,7 @@ public class SimpleSelenideTest1 extends TestBaseForSelenide {
         HomePage homePage = open("https://epam.github.io/JDI", HomePage.class);
 
 //        2. Assert Browser title
-//        TODO: Doesn't work
-//      homePage.checkPageTitleEqualsTo("Home Page");
+        homePage.checkPageTitleEqualsTo("Home Page");
 
 //        3. Perform login
         homePage.signIn("epam", "1234");
@@ -42,19 +40,18 @@ public class SimpleSelenideTest1 extends TestBaseForSelenide {
 //
 //        6. Click on "Service" subcategory in the header and check that drop down contains options
         homePage.checkNavBarServiceOptions(serviceTabContent);
-//
-//
+
 //        7. Click on Service subcategory in the left section and check that drop down contains options
         homePage.checkSideBarServiceOptions(serviceTabContent);
 
 //        8. Open through the header menu Service -> Different Elements Page
         DifferentElementsPage dePage = homePage.openDifferentElements();
-//
-//        9. Check interface on Different elements page, it contains all needed elements
+
+        //        9. Check interface on Different elements page, it contains all needed elements
         dePage.checkNumberOfCheckBoxElements(4);
         dePage.checkNumberOfRadioButtonElements(4);
         dePage.checkNumberOfButtonsElements(2);
-//        TODO: 1 drop down menu
+        dePage.checkDropDownMwnuIsPresent();
 
 //        10. Assert that there is Right Section
         dePage.checkFixPaneIsVisible();
@@ -63,31 +60,21 @@ public class SimpleSelenideTest1 extends TestBaseForSelenide {
         dePage.checkNavBarIsVisible();
 
 //        12. Select checkboxes
-        dePage.selectCheckBoxElement(CheckBoxesEnum.WATER.index);
-        dePage.selectCheckBoxElement(CheckBoxesEnum.WIND.index);
-
 //        13. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-        dePage.verifyCheckboxIsSelected(CheckBoxesEnum.WATER.index);
-        dePage.verifyCheckboxIsSelected(CheckBoxesEnum.WIND.index);
+        dePage.clickCheckboxElement(CheckBoxesEnum.WATER.index, true);
+        dePage.clickCheckboxElement(CheckBoxesEnum.WIND.index, true);
 
 //        14. Select radio
+//        15. Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
         dePage.selectRadioElement(RadioButtonEnum.SELEN.index);
 
-//        15. Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
-        dePage.verifyRadioElementIsSelected(RadioButtonEnum.SELEN.index);
-//
-//        16. Select in dropdown
+//        16. Select elements in dropdown
+//        17. Assert that for dropdown there is a log row and value is corresponded to the selected value.
         dePage.selectDropDownElement(SelectEnum.YELLOW.index);
 
-//        17. Assert that for dropdown there is a log row and value is corresponded to the selected value.
-        dePage.verifyDropDownItemIsSelected(SelectEnum.YELLOW.index);
-
-//        18. Unselect and assert checkboxes
-        dePage.unselectCheckboxElement(CheckBoxesEnum.WATER.index);
-        dePage.unselectCheckboxElement(CheckBoxesEnum.WIND.index);
-
+//        18. Unselect checkboxes
 //        19. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-        dePage.verifyCheckboxIsUnselected(CheckBoxesEnum.WATER.index);
-        dePage.verifyCheckboxIsUnselected(CheckBoxesEnum.WIND.index);
+        dePage.clickCheckboxElement(CheckBoxesEnum.WATER.index, false);
+        dePage.clickCheckboxElement(CheckBoxesEnum.WIND.index, false);
     }
 }
