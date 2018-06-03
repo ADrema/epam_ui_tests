@@ -22,7 +22,7 @@ public class SimpleSelenideTest2 extends TestBaseForSelenide {
 
 //        4. Assert User name in the left-top side of screen that user is loggined
 //        homePage.
-        homePage.checkUserName("PITER CHAILOVSKII0");
+        homePage.checkUserName("PITER CHAILOVSKII");
 
 //        5. Open through the header menu Service -> Different Elements Page
         DatesPage datesPage = homePage.openDatesPage();
