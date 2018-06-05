@@ -19,7 +19,7 @@ public class SimpleSelenideTest1 extends TestBaseForSelenide {
             "Simple Table", "User Table", "Table with pages",
             "Different elements", "Performance");
 
-    @Test
+    @Test (testName = "Different Elements page tests" )
     public void testIndexPageWithSelenide() {
 //        1. Open test site by URL
         HomePage homePage = open("https://epam.github.io/JDI", HomePage.class);
