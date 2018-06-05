@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class AllureSimpleSelenideTest2 extends TestBaseForSelenide {
 
     @Test()
-    public void testIndexPageWithSelenide() throws InterruptedException {
+    public void testIndexPageWithSelenide() {
 //        1. Open test site by URL
         HomePage homePage = open("https://epam.github.io/JDI", HomePage.class);
 
