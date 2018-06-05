@@ -15,7 +15,7 @@ import java.util.List;
 import static com.codeborne.selenide.Selenide.open;
 
 @Feature("Test for Different Elements page with failed result")
-public class AllureSimpleSelenideTest1_failed extends TestBaseForSelenide {
+public class AllureSimpleSelenideTest1Failed extends TestBaseForSelenide {
 
     private List<String> serviceTabContent = Arrays.asList("Support", "Dates", "Complex Table",
             "Simple Table", "User Table", "Table with pages",
