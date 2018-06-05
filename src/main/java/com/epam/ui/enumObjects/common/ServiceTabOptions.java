@@ -1,5 +1,8 @@
 package com.epam.ui.enumObjects.common;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum ServiceTabOptions {
     SUPPORT("Support", "https://epam.github.io/JDI/support.html"),
 
@@ -17,11 +20,19 @@ public enum ServiceTabOptions {
 
     PERFORMANCE("Performance", "https://epam.github.io/JDI/performance.html");
 
-    public String tabs;
+    public String name;
     public String url;
 
-    ServiceTabOptions(String tabs, String url) {
-        this.tabs = tabs;
+    ServiceTabOptions(String name, String url) {
+        this.name = name;
         this.url = url;
+    }
+
+    public static List<String> getLinkNames(){
+        List<String> container = new ArrayList<String>();
+        for(ServiceTabOptions option: values()){
+            container.add(option.name);
+        }
+        return container;
     }
 }

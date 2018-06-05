@@ -101,16 +101,14 @@ public class HomePage {
     }
 
     @Step("Click on 'Service' subcategory in the header and check that drop down contains options")
-    public void checkNavBarServiceOptions(List<String> serviceTabContent) {
+    public void checkNavBarServiceOptions() {
         serviceDropDownMenu.click();
-//        ElementsCollection serviceTab = $$(".uui-header .nav li.dropdown .dropdown-menu a");
-        checkElementsTexts(serviceTab, serviceTabContent);
+        checkElementsTexts(serviceTab, ServiceTabOptions.getLinkNames());
     }
 
     @Step("Click on Service subcategory in the left section and check that drop down contains options")
-    public void checkSideBarServiceOptions(List<String> serviceTabContent) {
-//        ElementsCollection sideBarServices = $$(".uui-side-bar[name = 'navigation-sidebar']  .sub a");
-        checkElementsTexts(sideBarServices, serviceTabContent);
+    public void checkSideBarServiceOptions() {
+        checkElementsTexts(sideBarServices, ServiceTabOptions.getLinkNames());
     }
 
     @Step("Open through the header menu Service -> Different Elements Page")

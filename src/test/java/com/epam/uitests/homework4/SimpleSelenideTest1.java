@@ -9,16 +9,9 @@ import com.epam.ui.pageObjects.selenide.DifferentElementsPage;
 import com.epam.ui.pageObjects.selenide.HomePage;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static com.codeborne.selenide.Selenide.open;
 
 public class SimpleSelenideTest1 extends TestBaseForSelenide {
-
-    private List<String> serviceTabContent = Arrays.asList("Support", "Dates", "Complex Table",
-            "Simple Table", "User Table", "Table with pages",
-            "Different elements", "Performance");
 
     @Test (testName = "Different Elements page tests" )
     public void testIndexPageWithSelenide() {
@@ -40,10 +33,10 @@ public class SimpleSelenideTest1 extends TestBaseForSelenide {
         homePage.checkMainContentTexts();
 //
 //        6. Click on "Service" subcategory in the header and check that drop down contains options
-        homePage.checkNavBarServiceOptions(serviceTabContent);
+        homePage.checkNavBarServiceOptions();
 
 //        7. Click on Service subcategory in the left section and check that drop down contains options
-        homePage.checkSideBarServiceOptions(serviceTabContent);
+        homePage.checkSideBarServiceOptions();
 
 //        8. Open through the header menu Service -> Different Elements Page
         DifferentElementsPage dePage = homePage.openDifferentElements();
