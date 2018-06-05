@@ -1,6 +1,7 @@
 package com.epam.uitests.homework4;
 
 import com.epam.ui.base.TestBaseForSelenide;
+import com.epam.ui.enumObjects.common.MainPages;
 import com.epam.ui.enumObjects.differentElementsPage.CheckBoxesEnum;
 import com.epam.ui.enumObjects.differentElementsPage.RadioButtonEnum;
 import com.epam.ui.enumObjects.differentElementsPage.SelectEnum;
@@ -13,13 +14,13 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class SimpleSelenideTest1 extends TestBaseForSelenide {
 
-    @Test (testName = "Different Elements page tests" )
+    @Test(testName = "Different Elements page tests")
     public void testIndexPageWithSelenide() {
 //        1. Open test site by URL
-        HomePage homePage = open("https://epam.github.io/JDI", HomePage.class);
+        HomePage homePage = open(MainPages.HOMEPAGE.url, HomePage.class);
 
 //        2. Assert Browser title
-        homePage.checkPageTitleEqualsTo("Home Page");
+        homePage.checkPageTitleEqualsTo(MainPages.HOMEPAGE.title);
 
 //        3. Perform login
         homePage.signIn(Users.PITER_CHAILOVSKII);
