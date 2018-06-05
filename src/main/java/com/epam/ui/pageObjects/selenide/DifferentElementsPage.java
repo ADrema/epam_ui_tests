@@ -39,7 +39,6 @@ public class DifferentElementsPage {
     @Step("Check interface on Different elements page, CheckBox elements are presented")
     public void checkNumberOfCheckBoxElements(int amount) {
         checkBoxesBoard.shouldHaveSize(amount);
-        System.out.println("actual size: " + checkBoxesBoard.size());
     }
 
     @Step("Check interface on Different elements page, Radio button elements are presented")
