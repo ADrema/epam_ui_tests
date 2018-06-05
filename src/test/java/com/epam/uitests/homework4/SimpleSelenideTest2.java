@@ -1,6 +1,7 @@
 package com.epam.uitests.homework4;
 
 import com.epam.ui.base.TestBaseForSelenide;
+import com.epam.ui.enumObjects.common.MainPages;
 import com.epam.ui.enumObjects.homePage.Users;
 import com.epam.ui.pageObjects.selenide.DatesPage;
 import com.epam.ui.pageObjects.selenide.HomePage;
@@ -13,10 +14,10 @@ public class SimpleSelenideTest2 extends TestBaseForSelenide {
     @Test(testName = "Dates page tests")
     public void testDatesPageWithSelenide(){
 //        1. Open test site by URL
-        HomePage homePage = open("https://epam.github.io/JDI", HomePage.class);
+        HomePage homePage = open(MainPages.HOMEPAGE.url, HomePage.class);
 
 //        2. Assert Browser title
-        homePage.checkPageTitleEqualsTo("Home Page");
+        homePage.checkPageTitleEqualsTo(MainPages.HOMEPAGE.title);
 
 //        3. Perform login
         homePage.signIn(Users.PITER_CHAILOVSKII);
