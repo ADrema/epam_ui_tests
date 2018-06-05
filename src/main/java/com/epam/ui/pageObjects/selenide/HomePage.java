@@ -3,6 +3,7 @@ package com.epam.ui.pageObjects.selenide;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.epam.ui.enumObjects.common.ServiceTabOptions;
 import com.epam.ui.enumObjects.homePage.Users;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
@@ -115,12 +116,12 @@ public class HomePage {
     @Step("Open through the header menu Service -> Different Elements Page")
     public DifferentElementsPage openDifferentElements() {
         navigationBar.click();
-        return open("https://epam.github.io/JDI/different-elements.html", DifferentElementsPage.class);
+        return open(ServiceTabOptions.DIFFERENTELEMENTS.url, DifferentElementsPage.class);
     }
 
     public DatesPage openDatesPage() {
         navigationBar.click();
-        return open("https://epam.github.io/JDI/dates.html", DatesPage.class);
+        return open(ServiceTabOptions.DATES.url, DatesPage.class);
     }
 
     public void check4imagesArePresented() {
