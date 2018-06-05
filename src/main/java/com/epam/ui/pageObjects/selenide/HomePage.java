@@ -3,13 +3,15 @@ package com.epam.ui.pageObjects.selenide;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.epam.ui.enumObjects.homePage.Users;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.title;
 import static org.testng.Assert.assertEquals;
 
 public class HomePage {
@@ -69,10 +71,10 @@ public class HomePage {
     private SelenideElement navigationBar;
 
     @Step("Perform login")
-    public void signIn(String loginValue, String passwordValue) {
+    public void signIn(Users user) {
         profileIcon.click();
-        login.sendKeys(loginValue);
-        password.sendKeys(passwordValue);
+        login.sendKeys(user.login);
+        password.sendKeys(user.password);
         submitButton.click();
     }
 
@@ -82,8 +84,8 @@ public class HomePage {
     }
 
     @Step("Assert User name in the left-top side of screen that user is loggined")
-    public void checkUserName(String userNameValue) {
-        user.shouldHave(Condition.exactText(userNameValue));
+    public void checkUserName(Users userProfile) {
+        user.shouldHave(Condition.exactText(userProfile.name));
     }
 
     @Step("Check interface on Home page, it contains all needed elements:")

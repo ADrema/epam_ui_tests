@@ -1,6 +1,7 @@
 package com.epam.uitests.homework5.ex2;
 
 import com.epam.ui.base.TestBaseForSelenide;
+import com.epam.ui.enumObjects.homePage.Users;
 import com.epam.ui.pageObjects.selenide.DatesPage;
 import com.epam.ui.pageObjects.selenide.HomePage;
 import io.qameta.allure.Feature;
@@ -12,7 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class AllureSimpleSelenideTest2 extends TestBaseForSelenide {
 
-    @Test(groups = "Allure")
+    @Test()
     public void testIndexPageWithSelenide() throws InterruptedException {
 //        1. Open test site by URL
         HomePage homePage = open("https://epam.github.io/JDI", HomePage.class);
@@ -21,11 +22,11 @@ public class AllureSimpleSelenideTest2 extends TestBaseForSelenide {
         homePage.checkPageTitleEqualsTo("Home Page");
 
 //        3. Perform login
-        homePage.signIn("epam", "1234");
+        homePage.signIn(Users.PITER_CHAILOVSKII);
 
 //        4. Assert User name in the left-top side of screen that user is loggined
 //        homePage.
-        homePage.checkUserName("PITER CHAILOVSKII");
+        homePage.checkUserName(Users.PITER_CHAILOVSKII);
 
 //        5. Open through the header menu Service -> Different Elements Page
         DatesPage datesPage = homePage.openDatesPage();

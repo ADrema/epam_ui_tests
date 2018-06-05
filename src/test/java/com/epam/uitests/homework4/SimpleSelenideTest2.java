@@ -1,6 +1,7 @@
 package com.epam.uitests.homework4;
 
 import com.epam.ui.base.TestBaseForSelenide;
+import com.epam.ui.enumObjects.homePage.Users;
 import com.epam.ui.pageObjects.selenide.DatesPage;
 import com.epam.ui.pageObjects.selenide.HomePage;
 import org.testng.annotations.Test;
@@ -18,11 +19,11 @@ public class SimpleSelenideTest2 extends TestBaseForSelenide {
         homePage.checkPageTitleEqualsTo("Home Page");
 
 //        3. Perform login
-        homePage.signIn("epam", "1234");
+        homePage.signIn(Users.PITER_CHAILOVSKII);
 
 //        4. Assert User name in the left-top side of screen that user is loggined
 //        homePage.
-        homePage.checkUserName("PITER CHAILOVSKII");
+        homePage.checkUserName(Users.PITER_CHAILOVSKII);
 
 //        5. Open through the header menu Service -> Different Elements Page
         DatesPage datesPage = homePage.openDatesPage();
