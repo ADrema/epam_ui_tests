@@ -27,7 +27,6 @@ public class TestIndexPage {
             "Already have good base\n" + "(about 20 internal and\n" + "some external projects),\n" +
                     "wish to get more…"
     );
-
     @BeforeClass
     public void beforeClass() {
         options = new ChromeOptions();
@@ -49,12 +48,12 @@ public class TestIndexPage {
     }
 
     @Test()
-    public void IndexPageTest() {
+    public void indexPageTest() {
 //        1. Open test site by URL
-        driver.navigate().to("https://epam.github.io/JDI");
+        homePage.openMainPage(driver);
 
 //        2. Assert Browser title
-        homePage.checkPageTitleEqualsTo("Home Page");
+        homePage.checkHomePageTitle(driver);
 
 //        3. Perform login
         homePage.signIn("epam", "1234");
@@ -63,7 +62,7 @@ public class TestIndexPage {
         homePage.checkUserName("PITER CHAILOVSKII");
 
 //        5. Assert Browser title
-        homePage.checkPageTitleEqualsTo("Home Page");
+        homePage.checkHomePageTitle(driver);
 
 //        6. Assert that there are 4 items on the header section are displayed and they have proper texts
         homePage.checkTextsOfHeaderSection(navBarItemTexts);

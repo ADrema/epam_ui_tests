@@ -10,7 +10,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class HomePage {
-    private WebDriver driver;
 
     @FindBy(css = ".uui-side-bar[name='navigation-sidebar']")
     private WebElement leftSection;
@@ -51,12 +50,12 @@ public class HomePage {
     @FindBy(css = ".main-content .text-center a")
     private WebElement jdiGitHubLink;
 
-    public HomePage(WebDriver webDriver) {
-        driver = webDriver;
+    public void openMainPage(WebDriver driver){
+        driver.navigate().to("https://epam.github.io/JDI");
     }
 
-    public void checkPageTitleEqualsTo(String title) {
-        assertEquals(driver.getTitle(), title);
+    public void checkHomePageTitle( WebDriver driver) {
+        assertEquals(driver.getTitle(), "Home Page");
     }
 
     public void signIn(String loginValue, String passwordValue) {
@@ -70,14 +69,8 @@ public class HomePage {
         assertEquals(user.getText(), userNameValue);
     }
 
-    public void setDriver(WebDriver driver) {
-        this.driver = driver;
-    }
-
     public void checkTextsOfHeaderSection(List<String> itemsText) {
-        for (WebElement element : navBarItems) {
-            assertTrue(itemsText.contains(element.getText()));
-        }
+        checkTextElementInCollection(navBarItems,itemsText);
     }
 
     public void check4imagesArePresented() {
@@ -87,17 +80,15 @@ public class HomePage {
     }
 
     public void check4TextsUnderImages(List<String> textContent) {
-        for (WebElement element : textsUndrImages) {
-            assertTrue(textContent.contains(element.getText()));
-        }
+        checkTextElementInCollection(textsUndrImages,textContent);
     }
 
     public void checkMainHeaderTextIsEqualTo(String textValue) {
-        assertEquals(headerText.getText(), textValue);
+        checkElementText(headerText, textValue);
     }
 
     public void checkSubheaderTextIsEqualTo(String textValue) {
-        assertEquals(subHeaderText.getText(), textValue);
+        checkElementText(subHeaderText, textValue);
     }
 
     public void checkJDIurlEqualsTo(String urlValue) {
@@ -110,5 +101,15 @@ public class HomePage {
 
     public void checkFooterIsDisplayed() {
         assertTrue(footer.isDisplayed());
+    }
+
+    private void checkElementText(WebElement element, String expectedText){
+        assertEquals(element.getText(),expectedText);
+    }
+
+    private void checkTextElementInCollection(List<WebElement> elements, List<String> textContent){
+        for (WebElement element : elements) {
+            assertTrue(textContent.contains(element.getText()));
+        }
     }
 }

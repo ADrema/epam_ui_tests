@@ -1,6 +1,7 @@
 package com.epam.uitests.homework5.ex2;
 
 import com.epam.ui.base.TestBaseForSelenide;
+import com.epam.ui.enumObjects.common.ServiceTabOptions;
 import com.epam.ui.enumObjects.differentElementsPage.CheckBoxesEnum;
 import com.epam.ui.enumObjects.differentElementsPage.RadioButtonEnum;
 import com.epam.ui.enumObjects.differentElementsPage.SelectEnum;
@@ -14,6 +15,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 @Feature("Test for Different Elements page")
 public class AllureSimpleSelenideTest1 extends TestBaseForSelenide {
+    private HomePage homePage;
+    private DifferentElementsPage dePage;
 
     @Test()
     public void testIndexPageWithSelenide() {
@@ -41,7 +44,7 @@ public class AllureSimpleSelenideTest1 extends TestBaseForSelenide {
         homePage.checkSideBarServiceOptions();
 
 //        8. Open through the header menu Service -> Different Elements Page
-        DifferentElementsPage dePage = homePage.openDifferentElements();
+        dePage.open(ServiceTabOptions.DIFFERENTELEMENTS.url);
 //
 //        9. Check interface on Different elements page, it contains all needed elements
         dePage.checkNumberOfCheckBoxElements(4);

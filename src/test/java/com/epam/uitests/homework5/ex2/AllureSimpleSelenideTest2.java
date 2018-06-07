@@ -1,6 +1,7 @@
 package com.epam.uitests.homework5.ex2;
 
 import com.epam.ui.base.TestBaseForSelenide;
+import com.epam.ui.enumObjects.common.ServiceTabOptions;
 import com.epam.ui.enumObjects.homePage.Users;
 import com.epam.ui.pageObjects.selenide.DatesPage;
 import com.epam.ui.pageObjects.selenide.HomePage;
@@ -12,6 +13,8 @@ import static com.codeborne.selenide.Selenide.open;
 @Feature("Test for Dates page")
 
 public class AllureSimpleSelenideTest2 extends TestBaseForSelenide {
+    private HomePage homePage;
+    private DatesPage datesPage;
 
     @Test()
     public void testIndexPageWithSelenide() {
@@ -29,7 +32,7 @@ public class AllureSimpleSelenideTest2 extends TestBaseForSelenide {
         homePage.checkUserName(Users.PITER_CHAILOVSKII);
 
 //        5. Open through the header menu Service -> Different Elements Page
-        DatesPage datesPage = homePage.openDatesPage();
+        datesPage.open(ServiceTabOptions.DATES.url);
 
 //        6. Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most right position
 //        7. Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position

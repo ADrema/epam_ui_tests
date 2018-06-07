@@ -2,6 +2,7 @@ package com.epam.ui.pageObjects.selenide;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,11 @@ public class DatesPage {
 
     @FindBy(how = How.CSS, using = ".panel-body-list.logs li:nth-child(1)")
     private static SelenideElement lastLogRecord;
+
+    @Step("Open Dates page")
+    public void open(String url){
+        Selenide.open(url);
+    }
 
     @Step("Move sliders to respective position")
     public void moveSliders(int expectedLS, int expectedRS) {

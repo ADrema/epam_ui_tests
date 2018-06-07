@@ -2,6 +2,7 @@ package com.epam.ui.pageObjects.selenide;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.epam.ui.enumObjects.common.ServiceTabOptions;
 import com.epam.ui.enumObjects.homePage.Users;
@@ -11,7 +12,6 @@ import org.openqa.selenium.support.How;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.title;
 import static org.testng.Assert.assertEquals;
 
@@ -71,6 +71,11 @@ public class HomePage {
     @FindBy(how = How.CSS, using = ".uui-side-bar[name = 'navigation-sidebar']  .sub a[href = 'different-elements.html']")
     private SelenideElement navigationBar;
 
+    @Step("Open Home page")
+    public void open(String url){
+        Selenide.open(url);
+    }
+
     @Step("Perform login")
     public void signIn(Users user) {
         profileIcon.click();
@@ -111,16 +116,16 @@ public class HomePage {
         checkElementsTexts(sideBarServices, ServiceTabOptions.getLinkNames());
     }
 
-    @Step("Open through the header menu Service -> Different Elements Page")
-    public DifferentElementsPage openDifferentElements() {
-        navigationBar.click();
-        return open(ServiceTabOptions.DIFFERENTELEMENTS.url, DifferentElementsPage.class);
-    }
-
-    public DatesPage openDatesPage() {
-        navigationBar.click();
-        return open(ServiceTabOptions.DATES.url, DatesPage.class);
-    }
+//    @Step("Open through the header menu Service -> Different Elements Page")
+//    public DifferentElementsPage openDifferentElements() {
+//        navigationBar.click();
+//        return open(ServiceTabOptions.DIFFERENTELEMENTS.url, DifferentElementsPage.class);
+//    }
+//
+//    public DatesPage openDatesPage() {
+//        navigationBar.click();
+//        return open(ServiceTabOptions.DATES.url, DatesPage.class);
+//    }
 
     public void check4imagesArePresented() {
         for (SelenideElement image : imageElements) {

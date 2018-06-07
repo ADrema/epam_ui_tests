@@ -2,6 +2,7 @@ package com.epam.ui.pageObjects.selenide;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.epam.ui.enumObjects.differentElementsPage.CheckBoxesEnum;
 import com.epam.ui.enumObjects.differentElementsPage.RadioButtonEnum;
@@ -34,7 +35,12 @@ public class DifferentElementsPage {
     private SelenideElement dropDownEntryMode;
 
     @FindBy(how = How.CSS, using = ".main-content-hg .colors select option")
-    private ElementsCollection dropDownElement;
+    private ElementsCollection dropDownElements;
+
+    @Step("Open  Different Elements page")
+    public void open(String url){
+        Selenide.open(url);
+    }
 
     @Step("Check interface on Different elements page, CheckBox elements are presented")
     public void checkNumberOfCheckBoxElements(int amount) {
@@ -45,6 +51,8 @@ public class DifferentElementsPage {
     public void checkNumberOfRadioButtonElements(int amount) {
         radioButtonsBoard.shouldHaveSize(amount);
     }
+
+    @Step("Check dropdown menu is presented")
     public void checkDropDownMwnuIsPresent(){
         dropDownEntryMode.should(Condition.visible);
     }
@@ -64,14 +72,10 @@ public class DifferentElementsPage {
         navBar.shouldBe(Condition.visible);
     }
 
+    @Step("Select checkboxes and check the log row")
     public void clickCheckboxElement(int index, boolean action) {
-        if (action == true) {
-            checkBoxesBoard.get(index).click();
-            lastLogRecord.shouldHave(Condition.text(CheckBoxesEnum.getTextValue(index) + ": condition changed to true"));
-        } else if (action == false) {
-            checkBoxesBoard.get(index).click();
-            lastLogRecord.shouldHave(Condition.text(CheckBoxesEnum.getTextValue(index) + ": condition changed to false"));
-        }
+        checkBoxesBoard.get(index).click();
+        lastLogRecord.shouldHave(Condition.text(CheckBoxesEnum.getTextValue(index) + ": condition changed to " +  String.valueOf(action)));
     }
 
     @Step("Select radioButton element and check log row")
@@ -83,7 +87,7 @@ public class DifferentElementsPage {
     @Step("Select in dropdown and check log row")
     public void selectDropDownElement(int index) {
         dropDownEntryMode.click();
-        dropDownElement.get(index).click();
+        dropDownElements.get(index).click();
         lastLogRecord.shouldHave(Condition.text("Colors: value changed to " + SelectEnum.getTextValue(index)));
     }
 }
