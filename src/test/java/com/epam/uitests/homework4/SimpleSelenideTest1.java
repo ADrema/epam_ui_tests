@@ -1,8 +1,6 @@
 package com.epam.uitests.homework4;
 
 import com.epam.ui.base.TestBaseForSelenide;
-import com.epam.ui.enumObjects.common.MainPages;
-import com.epam.ui.enumObjects.common.ServiceTabOptions;
 import com.epam.ui.enumObjects.differentElementsPage.CheckBoxesEnum;
 import com.epam.ui.enumObjects.differentElementsPage.RadioButtonEnum;
 import com.epam.ui.enumObjects.differentElementsPage.SelectEnum;
@@ -28,10 +26,10 @@ public class SimpleSelenideTest1 extends TestBaseForSelenide {
     @Test(testName = "Different Elements page tests")
     public void testIndexPageWithSelenide() {
 //        1. Open test site by URL
-        homePage.open(MainPages.HOMEPAGE.url);
+        homePage.open();
 
 //        2. Assert Browser title
-        homePage.checkPageTitleEqualsTo(MainPages.HOMEPAGE.title);
+        homePage.checkHomePageTitle();
 
 //        3. Perform login
         homePage.signIn(Users.PITER_CHAILOVSKII);
@@ -40,7 +38,7 @@ public class SimpleSelenideTest1 extends TestBaseForSelenide {
         homePage.checkUserName(Users.PITER_CHAILOVSKII);
 
 //        5. Check interface on Home page, it contains all needed elements: 4 - pictures, 4 texts under them, 2 text above
-        homePage.checkBenefits(4);
+        homePage.checkBenefitssize();
         homePage.checkMainContentTexts();
 //
 //        6. Click on "Service" subcategory in the header and check that drop down contains options
@@ -50,12 +48,12 @@ public class SimpleSelenideTest1 extends TestBaseForSelenide {
         homePage.checkSideBarServiceOptions();
 
 //        8. Open through the header menu Service -> Different Elements Page
-        dePage.open(ServiceTabOptions.DIFFERENTELEMENTS.url);
+        dePage.open();
 
 //        9. Check interface on Different elements page, it contains all needed elements
-        dePage.checkNumberOfCheckBoxElements(4);
-        dePage.checkNumberOfRadioButtonElements(4);
-        dePage.checkNumberOfButtonsElements(2);
+        dePage.checkNumberOfCheckBoxElements();
+        dePage.checkNumberOfRadioButtonElements();
+        dePage.checkNumberOfButtonsElements();
         dePage.checkDropDownMwnuIsPresent();
 
 //        10. Assert that there is Right Section
@@ -64,18 +62,32 @@ public class SimpleSelenideTest1 extends TestBaseForSelenide {
 //        11. Assert that there is Left Section
         dePage.checkNavBarIsVisible();
 
-//        12. Select checkboxes and assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
-        dePage.clickCheckboxElement(CheckBoxesEnum.WATER.index, true);
-        dePage.clickCheckboxElement(CheckBoxesEnum.WIND.index, true);
+//        12. Select checkboxes
+        dePage.selectCheckboxElement(CheckBoxesEnum.WATER.index);
+        dePage.selectCheckboxElement(CheckBoxesEnum.WIND.index);
 
-//        13. Select radio and Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
+//        13. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox.
+        dePage.verifyCheckBoxLogRow(CheckBoxesEnum.WATER.index, true, 2);
+        dePage.verifyCheckBoxLogRow(CheckBoxesEnum.WIND.index, true, 1);
+
+//        13. Select radio
         dePage.selectRadioElement(RadioButtonEnum.SELEN.index);
 
-//        14. Select elements in dropdown and Assert that for dropdown there is a log row and value is corresponded to the selected value.
+//        14. Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
+        dePage.verifyRadioButtonLogRow(RadioButtonEnum.SELEN.index, 1);
+
+//        14. Select elements in dropdown
         dePage.selectDropDownElement(SelectEnum.YELLOW.index);
 
-//        15. Unselect checkboxes and Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox
-        dePage.clickCheckboxElement(CheckBoxesEnum.WATER.index, false);
-        dePage.clickCheckboxElement(CheckBoxesEnum.WIND.index, false);
+//        15. Assert that for dropdown there is a log row and value is corresponded to the selected value.
+        dePage.verifyDropDownElementLogRow(SelectEnum.YELLOW.index, 1);
+
+//        15. Unselect checkboxes
+        dePage.selectCheckboxElement(CheckBoxesEnum.WATER.index);
+        dePage.selectCheckboxElement(CheckBoxesEnum.WIND.index);
+
+//        16. Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox
+        dePage.verifyCheckBoxLogRow(CheckBoxesEnum.WATER.index, false, 2);
+        dePage.verifyCheckBoxLogRow(CheckBoxesEnum.WIND.index, false, 1);
     }
 }

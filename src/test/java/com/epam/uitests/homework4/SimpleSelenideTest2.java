@@ -1,8 +1,6 @@
 package com.epam.uitests.homework4;
 
 import com.epam.ui.base.TestBaseForSelenide;
-import com.epam.ui.enumObjects.common.MainPages;
-import com.epam.ui.enumObjects.common.ServiceTabOptions;
 import com.epam.ui.enumObjects.homePage.Users;
 import com.epam.ui.pageObjects.selenide.DatesPage;
 import com.epam.ui.pageObjects.selenide.HomePage;
@@ -22,12 +20,12 @@ public class SimpleSelenideTest2 extends TestBaseForSelenide {
     }
 
     @Test(testName = "Dates page tests")
-    public void testDatesPageWithSelenide(){
+    public void testDatesPageWithSelenide() {
 //        1. Open test site by URL
-        homePage.open(ServiceTabOptions.DATES.url);
+        homePage.open();
 
 //        2. Assert Browser title
-        homePage.checkPageTitleEqualsTo(MainPages.HOMEPAGE.title);
+        homePage.checkHomePageTitle();
 
 //        3. Perform login
         homePage.signIn(Users.PITER_CHAILOVSKII);
@@ -36,18 +34,30 @@ public class SimpleSelenideTest2 extends TestBaseForSelenide {
         homePage.checkUserName(Users.PITER_CHAILOVSKII);
 
 //        5. Open through the header menu Service -> Different Elements Page
-        datesPage.open(ServiceTabOptions.DATES.url);
+        datesPage.open();
 
-//        6. Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most right position and assert the log row
+//        6. Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most right position
         datesPage.moveSliders(0, 100);
 
-//        7. Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most left position and assert the log row
+//        7. Assert log row
+        datesPage.verifyLogRow(0, 2, 100, 1);
+
+//        8. Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most left position and assert the log row
         datesPage.moveSliders(0, 0);
 
-//        8. Using drag-and-drop set Range sliders. left sliders - the most rigth position, right slider - the most right position and assert the log row
+//        9. Assert log row
+        datesPage.verifyLogRow(0, 2, 0, 1);
+
+//        10. Using drag-and-drop set Range sliders. left sliders - the most rigth position, right slider - the most right position and assert the log row
         datesPage.moveSliders(100, 100);
 
-//        9. Using drag-and-drop set Range sliders and assert the log row
+//        11. Assert log row
+        datesPage.verifyLogRow(100, 1, 100, 2);
+
+//        12. Using drag-and-drop set Range sliders and assert the log row
         datesPage.moveSliders(30, 70);
+
+//        13. Assert log row
+        datesPage.verifyLogRow(30, 2, 70, 1);
     }
 }

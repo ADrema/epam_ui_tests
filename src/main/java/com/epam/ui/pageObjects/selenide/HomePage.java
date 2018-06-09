@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.epam.ui.enumObjects.common.MainPages;
 import com.epam.ui.enumObjects.common.ServiceTabOptions;
 import com.epam.ui.enumObjects.homePage.Users;
 import io.qameta.allure.Step;
@@ -65,15 +66,15 @@ public class HomePage {
     @FindBy(how = How.CSS, using = ".uui-side-bar[name = 'navigation-sidebar']  .sub a")
     private ElementsCollection serviceTab;
 
-    @FindBy(how = How.CSS, using = ".uui-side-bar[name = 'navigation-sidebar']  .sub a" )
+    @FindBy(how = How.CSS, using = ".uui-side-bar[name = 'navigation-sidebar']  .sub a")
     private ElementsCollection sideBarServices;
 
     @FindBy(how = How.CSS, using = ".uui-side-bar[name = 'navigation-sidebar']  .sub a[href = 'different-elements.html']")
     private SelenideElement navigationBar;
 
     @Step("Open Home page")
-    public void open(String url){
-        Selenide.open(url);
+    public void open() {
+        Selenide.open(ServiceTabOptions.DATES.url);
     }
 
     @Step("Perform login")
@@ -85,8 +86,8 @@ public class HomePage {
     }
 
     @Step("Assert Browser title")
-    public void checkPageTitleEqualsTo(String titleValue) {
-        assertEquals(title(), titleValue);
+    public void checkHomePageTitle() {
+        assertEquals(title(), MainPages.HOMEPAGE.title);
     }
 
     @Step("Assert User name in the left-top side of screen that user is loggined")
@@ -95,9 +96,9 @@ public class HomePage {
     }
 
     @Step("Check interface on Home page, it contains all needed elements:")
-    public void checkBenefits(int size) {
-        imageElements.shouldHaveSize(size);
-        textsUndrImages.shouldHaveSize(size);
+    public void checkBenefitssize() {
+        imageElements.shouldHaveSize(4);
+        textsUndrImages.shouldHaveSize(4);
     }
 
     public void checkMainContentTexts() {
@@ -115,17 +116,6 @@ public class HomePage {
     public void checkSideBarServiceOptions() {
         checkElementsTexts(sideBarServices, ServiceTabOptions.getLinkNames());
     }
-
-//    @Step("Open through the header menu Service -> Different Elements Page")
-//    public DifferentElementsPage openDifferentElements() {
-//        navigationBar.click();
-//        return open(ServiceTabOptions.DIFFERENTELEMENTS.url, DifferentElementsPage.class);
-//    }
-//
-//    public DatesPage openDatesPage() {
-//        navigationBar.click();
-//        return open(ServiceTabOptions.DATES.url, DatesPage.class);
-//    }
 
     public void check4imagesArePresented() {
         for (SelenideElement image : imageElements) {

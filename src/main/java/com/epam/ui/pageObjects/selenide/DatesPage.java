@@ -4,9 +4,12 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.epam.ui.enumObjects.common.ServiceTabOptions;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+
+import java.util.List;
 
 import static com.codeborne.selenide.Selenide.actions;
 import static com.codeborne.selenide.Selenide.title;
@@ -14,21 +17,15 @@ import static org.testng.Assert.assertEquals;
 
 public class DatesPage {
 
-    @FindBy(how = How.CSS, using = ".range-from input")
-    private ElementsCollection rangeForms;
-
     @FindBy(how = How.CSS, using = ".uui-slider.range .ui-slider-handle")
     private ElementsCollection sliders;
 
-    @FindBy(how = How.CSS, using = ".uui-slider")
-    private SelenideElement sliderBar;
-
-    @FindBy(how = How.CSS, using = ".panel-body-list.logs li:nth-child(1)")
-    private static SelenideElement lastLogRecord;
+    @FindBy(how = How.CSS, using = ".logs li")
+    private List<SelenideElement> log;
 
     @Step("Open Dates page")
-    public void open(String url){
-        Selenide.open(url);
+    public void open() {
+        Selenide.open(ServiceTabOptions.DATES.url);
     }
 
     @Step("Move sliders to respective position")
@@ -67,22 +64,22 @@ public class DatesPage {
     public static void additionalClickRightBorder(SelenideElement elementL, int diffL, int expectedL, SelenideElement elementR, int diffR, int expectedR) {
         actions().dragAndDropBy(elementL, diffL, 0).perform();
         elementL.click();
-        lastLogRecord.shouldHave(Condition.text("Range 2(From):" + expectedL + " link clicked"));
         actions().dragAndDropBy(elementR, diffR, 0).perform();
-        lastLogRecord.shouldHave(Condition.text("Range 2(To):" + expectedR + " link clicked"));
     }
 
     public static void reverseSteps(SelenideElement elementL, int diffL, int expectedL, SelenideElement elementR, int diffR, int expectedR) {
         actions().dragAndDropBy(elementR, diffR, 0).perform();
-        lastLogRecord.shouldHave(Condition.text("Range 2(To):" + expectedR + " link clicked"));
         actions().dragAndDropBy(elementL, diffL, 0).perform();
-        lastLogRecord.shouldHave(Condition.text("Range 2(From):" + expectedL + " link clicked"));
     }
 
     public static void directSteps(SelenideElement elementL, int diffL, int expectedL, SelenideElement elementR, int diffR, int expectedR) {
         actions().dragAndDropBy(elementL, diffL, 0).perform();
-        lastLogRecord.shouldHave(Condition.text("Range 2(From):" + expectedL + " link clicked"));
         actions().dragAndDropBy(elementR, diffR, 0).perform();
-        lastLogRecord.shouldHave(Condition.text("Range 2(To):" + expectedR + " link clicked"));
+    }
+
+    @Step("Assert the log row")
+    public void verifyLogRow(int expectedLC, int logRowLSindex, int expectedRS, int logRowRSindex) {
+        log.get(logRowLSindex - 1).shouldHave(Condition.text("Range 2(From):" + expectedLC + " link clicked"));
+        log.get(logRowRSindex - 1).shouldHave(Condition.text("Range 2(To):" + expectedRS + " link clicked"));
     }
 }
