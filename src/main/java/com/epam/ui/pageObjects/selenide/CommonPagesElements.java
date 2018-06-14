@@ -17,6 +17,4 @@ public class CommonPagesElements {
 
     @FindBy(className = "profile-photo")
     private SelenideElement profileIcon;
-
-
 }
