@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SimpleTest{
+public class SimpleTest {
     @Test(testName = "Test1")
     public void SimpleSeleniumTest() {
 //        System.setProperties("chromedriver.exe","C:\\Users\\Anastasiia_Dremina\\IdeaProjects\\AnastasiiaDremina\\chromedriver.exe");

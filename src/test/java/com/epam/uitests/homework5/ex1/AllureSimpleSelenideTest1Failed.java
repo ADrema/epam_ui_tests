@@ -23,6 +23,7 @@ public class AllureSimpleSelenideTest1Failed extends TestBaseForSelenide {
         homePage = page(HomePage.class);
         dePage = page(DifferentElementsPage.class);
     }
+
     @Test()
     public void testIndexPageWithSelenide() {
 //        1. Open test site by URL

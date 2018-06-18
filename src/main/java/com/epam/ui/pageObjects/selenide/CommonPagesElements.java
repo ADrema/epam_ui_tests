@@ -6,13 +6,11 @@ import org.openqa.selenium.support.How;
 
 public class CommonPagesElements {
 
-    @FindBy(how = How.CSS, using = ".uui-side-bar[name='navigation-sidebar']")
-    private SelenideElement leftSection;
-
     @FindBy(how = How.CSS, using = "title")
     public SelenideElement title;
-
-    @FindBy(how = How.TAG_NAME, using =  "footer")
+    @FindBy(how = How.CSS, using = ".uui-side-bar[name='navigation-sidebar']")
+    private SelenideElement leftSection;
+    @FindBy(how = How.TAG_NAME, using = "footer")
     private SelenideElement footer;
 
     @FindBy(className = "profile-photo")

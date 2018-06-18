@@ -12,7 +12,7 @@ public enum RadioButtonEnum {
         this.index = index;
     }
 
-    public  static String getTextValue(int index) {
+    public static String getTextValue(int index) {
         switch (index) {
             case 0:
                 return "Gold";

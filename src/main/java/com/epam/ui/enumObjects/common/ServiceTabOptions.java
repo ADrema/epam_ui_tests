@@ -28,9 +28,9 @@ public enum ServiceTabOptions {
         this.url = url;
     }
 
-    public static List<String> getLinkNames(){
+    public static List<String> getLinkNames() {
         List<String> container = new ArrayList<String>();
-        for(ServiceTabOptions option: values()){
+        for (ServiceTabOptions option : values()) {
             container.add(option.name);
         }
         return container;

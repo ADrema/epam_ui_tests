@@ -7,11 +7,11 @@ public enum ButtonsEnum {
 
     public int index;
 
-    ButtonsEnum(int index){
+    ButtonsEnum(int index) {
         this.index = index;
     }
 
-    public  static String getTextValue(int index) {
+    public static String getTextValue(int index) {
         switch (index) {
             case 0:
                 return "Button";

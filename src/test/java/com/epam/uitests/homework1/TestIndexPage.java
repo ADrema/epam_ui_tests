@@ -25,7 +25,7 @@ public class TestIndexPage {
     private ChromeOptions options;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
 
         options = new ChromeOptions();
         options.addArguments("--disable-extensions");

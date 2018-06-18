@@ -66,7 +66,7 @@ public class HomePage {
     @FindBy(css = ".main-content .text-center a")
     private WebElement jdiGitHubLink;
 
-    public void openMainPage(WebDriver driver){
+    public void openMainPage(WebDriver driver) {
         driver.navigate().to("https://epam.github.io/JDI");
     }
 
@@ -86,7 +86,7 @@ public class HomePage {
     }
 
     public void checkTextsOfHeaderSection() {
-        checkTextElementInCollection(navBarItems,navBarItemTexts);
+        checkTextElementInCollection(navBarItems, navBarItemTexts);
     }
 
     public void check4imagesArePresented() {
@@ -96,7 +96,7 @@ public class HomePage {
     }
 
     public void check4TextsUnderImages() {
-        checkTextElementInCollection(textsUndrImages,textContent);
+        checkTextElementInCollection(textsUndrImages, textContent);
     }
 
     public void checkMainHeaderTextIsEqualTo() {
@@ -119,11 +119,11 @@ public class HomePage {
         assertTrue(footer.isDisplayed());
     }
 
-    private void checkElementText(WebElement element, String expectedText){
-        assertEquals(element.getText(),expectedText);
+    private void checkElementText(WebElement element, String expectedText) {
+        assertEquals(element.getText(), expectedText);
     }
 
-    private void checkTextElementInCollection(List<WebElement> elements, List<String> textContent){
+    private void checkTextElementInCollection(List<WebElement> elements, List<String> textContent) {
         for (WebElement element : elements) {
             assertTrue(textContent.contains(element.getText()));
         }

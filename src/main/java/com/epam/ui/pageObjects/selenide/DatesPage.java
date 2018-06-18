@@ -23,6 +23,22 @@ public class DatesPage {
     @FindBy(how = How.CSS, using = ".logs li")
     private List<SelenideElement> log;
 
+    public static void additionalClickRightBorder(SelenideElement elementL, int diffL, int expectedL, SelenideElement elementR, int diffR, int expectedR) {
+        actions().dragAndDropBy(elementL, diffL, 0).perform();
+        elementL.click();
+        actions().dragAndDropBy(elementR, diffR, 0).perform();
+    }
+
+    public static void reverseSteps(SelenideElement elementL, int diffL, int expectedL, SelenideElement elementR, int diffR, int expectedR) {
+        actions().dragAndDropBy(elementR, diffR, 0).perform();
+        actions().dragAndDropBy(elementL, diffL, 0).perform();
+    }
+
+    public static void directSteps(SelenideElement elementL, int diffL, int expectedL, SelenideElement elementR, int diffR, int expectedR) {
+        actions().dragAndDropBy(elementL, diffL, 0).perform();
+        actions().dragAndDropBy(elementR, diffR, 0).perform();
+    }
+
     @Step("Open Dates page")
     public void open() {
         Selenide.open(ServiceTabOptions.DATES.url);
@@ -59,22 +75,6 @@ public class DatesPage {
 
     public void checkPageTitleEqualsTo(String titleValue) {
         assertEquals(title(), titleValue);
-    }
-
-    public static void additionalClickRightBorder(SelenideElement elementL, int diffL, int expectedL, SelenideElement elementR, int diffR, int expectedR) {
-        actions().dragAndDropBy(elementL, diffL, 0).perform();
-        elementL.click();
-        actions().dragAndDropBy(elementR, diffR, 0).perform();
-    }
-
-    public static void reverseSteps(SelenideElement elementL, int diffL, int expectedL, SelenideElement elementR, int diffR, int expectedR) {
-        actions().dragAndDropBy(elementR, diffR, 0).perform();
-        actions().dragAndDropBy(elementL, diffL, 0).perform();
-    }
-
-    public static void directSteps(SelenideElement elementL, int diffL, int expectedL, SelenideElement elementR, int diffR, int expectedR) {
-        actions().dragAndDropBy(elementL, diffL, 0).perform();
-        actions().dragAndDropBy(elementR, diffR, 0).perform();
     }
 
     @Step("Assert the log row")
