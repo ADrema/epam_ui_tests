@@ -8,7 +8,7 @@ public enum ServiceTabOptions {
     DATES("Dates", "https://epam.github.io/JDI/dates.html"),
     COMPLEXTABLE("Complex Table", "https://epam.github.io/JDI/complex-table.html"),
     SIMPLETBLE("Simple Table", "https://epam.github.io/JDI/simple-table.html"),
-    USERTABLE("User Table", "https://epam.github.io/JDI/user-table.html"),
+    USER_TABLE("User Table", "https://epam.github.io/JDI/user-table.html"),
     TABLESANDPAGES("Table with pages", "https://epam.github.io/JDI/table-pages.html"),
     DIFFERENTELEMENTS("Different elements", "https://epam.github.io/JDI/different-elements.html"),
     PERFORMANCE("Performance", "https://epam.github.io/JDI/performance.html");

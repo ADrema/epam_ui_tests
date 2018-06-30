@@ -107,6 +107,13 @@
             <artifactId>cucumber-testng</artifactId>
             <version>3.0.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>datatable-matchers</artifactId>
+            <version>LATEST</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
