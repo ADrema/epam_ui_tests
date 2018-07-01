@@ -19,7 +19,7 @@ Feature: JDI Simple Test
       | 5 | Yoshi Tannamuri |
       | 6 | Giovanni Rovelli |
 
-    When I check Description column of Users table
+    When I check Desciption column of Users table
     Then All cells of 'Description' column contains text
       | Number | Desciption |
       | 1 | Lorem ipsum |

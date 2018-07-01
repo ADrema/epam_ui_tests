@@ -143,30 +143,6 @@ public class HomeCucumberPage {
         }
     }
 
-    public void check4TextsUnderImages(List<String> textContent) {
-        checkElementsTexts(textsUndrImages, textContent);
-    }
-
-    public void checkMainHeaderTextIsEqualTo(String textValue) {
-        headerText.shouldHave(Condition.exactText(textValue));
-    }
-
-    public void checkSubheaderTextIsEqualTo(String textValue) {
-        subHeaderText.shouldHave(Condition.exactText(textValue));
-    }
-
-    public void checkJDIurlEqualsTo(String urlValue) {
-        jdiGitHubLink.shouldHave(Condition.exactText(urlValue));
-    }
-
-    public void checkLeftSectionIsDisplayed() {
-        leftSection.shouldBe(Condition.visible);
-    }
-
-    public void checkFooterIsDisplayed() {
-        footer.shouldBe(Condition.visible);
-    }
-
     private void checkElementsTexts(ElementsCollection elements, List<String> texts) {
         int textsCount = texts.size();
         elements.shouldHaveSize(textsCount);
