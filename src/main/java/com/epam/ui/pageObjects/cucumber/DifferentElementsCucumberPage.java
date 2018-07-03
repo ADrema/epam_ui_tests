@@ -16,7 +16,6 @@ import org.openqa.selenium.support.How;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 
 public class DifferentElementsCucumberPage {
@@ -134,11 +133,5 @@ public class DifferentElementsCucumberPage {
     @Then("(\\d+) logrow contains value (.+)")
     public void verifyDropDownElementLogRow(int logRow, String element) {
         log.get(logRow - 1).shouldHave(Condition.text("Colors: value changed to " + SelectEnum.valueOf(element).name()));
-    }
-
-    @Then("Logout")
-    public void logout(){
-        profile.click();
-        $(".logout").click();
     }
 }
