@@ -34,5 +34,3 @@ Feature: JDI Home Page
     And WIND checkbox is clicked
     Then 2 logrow contains WATER and false condition
     And 1 logrow contains WIND and false condition
-
-    Then Logout

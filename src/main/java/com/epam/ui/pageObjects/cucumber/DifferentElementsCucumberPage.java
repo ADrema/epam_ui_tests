@@ -22,14 +22,13 @@ import static com.codeborne.selenide.Selenide.page;
 public class DifferentElementsCucumberPage {
 
     private CheckBoxesEnum element;
+    private int checkBoxesAmount = 4;
+    private int radioButtonsAmount = 4;
+    private int buttonsAmount = 2;
 
     public DifferentElementsCucumberPage() {
         page(this);
     }
-
-    private int checkBoxesAmount = 4;
-    private int radioButtonsAmount = 4;
-    private int buttonsAmount = 2;
 
     @FindBy(how = How.CSS, using = ".checkbox-row input[type = 'checkbox']")
     private ElementsCollection checkBoxesBoard;
@@ -57,9 +56,6 @@ public class DifferentElementsCucumberPage {
 
     @FindBy(how = How.CSS, using = ".profile-photo")
     private SelenideElement profile;
-
-    @FindBy(how = How.CSS, using = ".btn-login")
-    private SelenideElement logout;
 
     @Step("Open  Different Elements page")
     @When("I'm on Different elements page")

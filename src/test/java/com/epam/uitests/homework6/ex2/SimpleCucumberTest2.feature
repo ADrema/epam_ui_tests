@@ -38,6 +38,3 @@ Feature: JDI Simple Test
       | Admin |
       | User |
       | Manager |
-
-
-
