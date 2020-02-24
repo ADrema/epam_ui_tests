@@ -2,7 +2,7 @@ package com.epam.ui.enumObjects.differentElementsPage;
 
 public enum ButtonsEnum {
 
-    SUBMITBUTTON(0),
+    SUBMIT_BUTTON(0),
     BUTTON(1);
 
     public int index;

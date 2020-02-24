@@ -23,6 +23,7 @@ public class DatesPage {
     @FindBy(how = How.CSS, using = ".logs li")
     private List<SelenideElement> log;
 
+//    TODO: yOffset can be defined as local constant variable
     public static void additionalClickRightBorder(SelenideElement elementL, int diffL, int expectedL, SelenideElement elementR, int diffR, int expectedR) {
         actions().dragAndDropBy(elementL, diffL, 0).perform();
         elementL.click();
@@ -61,6 +62,7 @@ public class DatesPage {
         if (expectedLS == 0) {
             diffLS--;
         }
+
         if (expectedRS == 0) {
             diffRS--;
         }

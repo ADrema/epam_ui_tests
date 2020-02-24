@@ -45,7 +45,7 @@ public class DifferentElementsPage {
 
     @Step("Open  Different Elements page")
     public void open() {
-        Selenide.open(ServiceTabOptions.DIFFERENTELEMENTS.url);
+        Selenide.open(ServiceTabOptions.DIFFERENT_ELEMENTS.url);
     }
 
     @Step("Check interface on Different elements page, CheckBox elements are presented")
@@ -85,6 +85,9 @@ public class DifferentElementsPage {
 
     @Step("Assert that for checkbox there is an individual log row and value is corresponded to the status of checkbox")
     public void verifyCheckBoxLogRow(int index, boolean action, int logRow) {
+ //        TODO: 1. String format can be used
+//        Ex: "%s : condition changed to %s", s1, s2
+//        TODO: 2. do not cross the border of 120 symbols
         log.get(logRow - 1).shouldHave(Condition.text(CheckBoxesEnum.getTextValue(index) + ": condition changed to " + String.valueOf(action)));
     }
 

@@ -10,6 +10,7 @@ import org.testng.annotations.Listeners;
 @Story("Implement tests on Selenide framework in Page Object pattern")
 @Listeners({AllureAttachmentListener.class})
 public class TestBaseForSelenide {
+    //TODO: Move to property if possible
     @BeforeSuite
     public void beforeSuite() {
         Configuration.browser = "CHROME";

@@ -11,6 +11,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class AllureAttachmentListener extends TestListenerAdapter {
 
+//    TODO: check is return type is needed
     @Attachment(value = "Attachment: {0}", type = "image/png")
     public byte[] makeScreenshot() {
         byte[] array = {1};

@@ -15,7 +15,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class TestIndexPage {
-
+//    TODO: delete not usedvariables
     private WebDriver driver;
     private ChromeOptions options;
     private String driverPath = "chromedriver.exe";

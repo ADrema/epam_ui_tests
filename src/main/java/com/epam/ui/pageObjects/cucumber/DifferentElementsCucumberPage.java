@@ -59,7 +59,7 @@ public class DifferentElementsCucumberPage {
     @Step("Open  Different Elements page")
     @When("I'm on Different elements page")
     public void open() {
-        Selenide.open(ServiceTabOptions.DIFFERENTELEMENTS.url);
+        Selenide.open(ServiceTabOptions.DIFFERENT_ELEMENTS.url);
     }
 
     @Step("Check interface on Different elements page, CheckBox elements are presented")
